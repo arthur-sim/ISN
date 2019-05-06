@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PublicationRepository")
  */
-class Publication
-{
+class Publication {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -26,32 +26,50 @@ class Publication
      */
     private $Description;
 
-    public function getId(): ?int
-    {
+    /**
+     * @ORM\ManyToMany(targetEntity="Sport", cascade={"persist"})
+     */
+    private $sports;
+
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getTitre(): ?string
-    {
+    public function getTitre(): ?string {
         return $this->titre;
     }
 
-    public function setTitre(string $titre): self
-    {
+    public function setTitre(string $titre): self {
         $this->titre = $titre;
 
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
+    public function getDescription(): ?string {
         return $this->Description;
     }
 
-    public function setDescription(string $Description): self
-    {
+    public function setDescription(string $Description): self {
         $this->Description = $Description;
 
         return $this;
     }
+    
+    public function addSport(Sport $sport)
+  {
+    $this->sports[] = $sport;
+  }
+
+  public function removeSport(Sport $sport)
+  {
+    $this->sports->removeElement($sport);
+  }
+
+  public function getSports()
+  {
+    return $this->sports;
+  }
+
+
+
 }

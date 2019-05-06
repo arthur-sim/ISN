@@ -6,6 +6,8 @@ use App\Entity\Publication;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use App\Form\SportType;
 
 class PublicationType extends AbstractType
 {
@@ -14,6 +16,15 @@ class PublicationType extends AbstractType
         $builder
             ->add('titre')
             ->add('Description')
+            ->add('sports', CollectionType::class, array(
+                    'entry_type' => SportType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false,
+                    'attr' => [
+                        'class' => 'collection',
+                    ],
+                ))
         ;
     }
 

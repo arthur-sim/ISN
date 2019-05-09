@@ -53,16 +53,16 @@ class User implements UserInterface, \Serializable
         return $this->id;
     }
 
-     public function getEmail(): string
-    {
+    function getEmail() {
         return $this->email;
     }
- 
-    public function setEmail(string $email): void
-    {
+
+    function setEmail($email) {
         $this->email = $email;
+        return $this;
     }
-    
+
+        
     public function getUsername(): ?string
     {
         return $this->username;

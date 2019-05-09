@@ -10,17 +10,17 @@ security:
             security: false
         main:
             anonymous: true
-            form_login:
+            #form_login:
                 # Le nom de la route de la page de connexion
-                check_path: security_login
+               #check_path: security_login
                 # Le nom de la route où se trouve le formulaire de connexion
                 # Si un utilisateur tente d'acceder à une page protégée sans en avoir les droits
                 # il sera redirigé sur cette page
-                login_path: security_login
+               #login_path: security_login
                 # Securisation des formulaires
-                csrf_token_generator: security.csrf.token_manager
+               #csrf_token_generator: security.csrf.token_manager
                 # La page par defaut apres une connexion reussie
-                default_target_path: admin
+               #default_target_path: admin
  
             logout:
                 # La route où se trouve le process de deconnexion
